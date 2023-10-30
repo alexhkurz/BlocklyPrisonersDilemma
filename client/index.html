@@ -57,15 +57,14 @@
                 },
                 body: JSON.stringify({ code: code }),
             })
-                .then(response => response.json())
-                .then(data => {
-                    console.log(data);
-                    document.getElementById('outputIndex').innerText = 'index: ' + data.output.join(', ');
-                    document.getElementById('outputLogs').innerText = data.logs.join('\n');
-                })
-                .catch((error) => {
-                    console.error('Error:', error);
-                });
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                document.getElementById('outputDiv').innerText = 'Output: ' + data.output.join(', ');
+            })
+            .catch((error) => {
+                console.error('Error:', error);
+            });
         }
 
         function saveBlocks() {
