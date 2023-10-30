@@ -51,9 +51,9 @@ module.exports = {
 
         // Run the game for a certain number of rounds
         for (let round = 0; round < this.env.numberOfRounds; round++) {
-            // Execute the code of the two players
-            let move1 = eval(code1);
-            let move2 = eval(code2);
+            // Wrap the code in a function before executing
+            let move1 = eval('(function() {' + code1 + '})()');
+            let move2 = eval('(function() {' + code2 + '})()');
 
             // Record the moves
             this.recordMove(1, move1);
