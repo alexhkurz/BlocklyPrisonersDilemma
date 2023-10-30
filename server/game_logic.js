@@ -45,25 +45,25 @@ module.exports = {
     },
 
     // A function to run the game
-    runGame: function(code1, code2) {
+    runGame: function(code0, code1) {
         // Reset the game
         this.reset();
 
         // Run the game for a certain number of rounds
         for (let round = 0; round < this.env.numberOfRounds; round++) {
             // Wrap the code in a function before executing
-            let move0 = eval('(function() { let getLastMove = ' + this.getLastMove.toString() + '; let opponent = 1; ' + code1 + '})()');
-            let move1 = eval('(function() { let getLastMove = ' + this.getLastMove.toString() + '; let opponent = 0; ' + code2 + '})()');
+            let move0 = eval('(function() { let getLastMove = ' + this.getLastMove.toString() + '; let opponent = 1; ' + code0 + '})()');
+            let move1 = eval('(function() { let getLastMove = ' + this.getLastMove.toString() + '; let opponent = 0; ' + code1 + '})()');
 
             // Record the moves
             this.recordMove(0, move0);
             this.recordMove(1, move1);
 
             // Update the payoff
-            let payoff1 = this.env.gameMatrix[move1][move2][0];
-            let payoff2 = this.env.gameMatrix[move1][move2][1];
-            this.env.payoff[0] += payoff1;
-            this.env.payoff[1] += payoff2;
+            let payoff0 = this.env.gameMatrix[move1][move2][0];
+            let payoff1 = this.env.gameMatrix[move1][move2][1];
+            this.env.payoff[0] += payoff0;
+            this.env.payoff[1] += payoff1;
         }
 
         // Return the result
