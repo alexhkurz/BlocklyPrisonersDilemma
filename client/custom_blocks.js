@@ -50,5 +50,18 @@ Blockly.defineBlocksWithJsonArray([
     "previousStatement": null,
     "nextStatement": null,
     "colour": 90,
+  },
+  {
+    "type": "loop",
+    "message0": "Loop %1",
+    "args0": [
+      {
+        "type": "input_statement",
+        "name": "STATEMENTS"
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 20,
   }
 ]);
