@@ -30,7 +30,7 @@ app.use((req, res, next) => {
       sessionToPlayer[req.sessionID] = req.session.playerId;
       console.log(`Player ${req.session.playerId} has joined the game.`);
     } else {
-      res.status(503).send({ error: 'No more players can join the game.' });
+      res.status(503).send({ error: 'The game is currently full. Please try again later.' });
       return;
     }
   }
