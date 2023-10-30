@@ -58,9 +58,9 @@ module.exports = {
             let move;
 
             // Execute the code
-            eval('(function() { let getLastMove = ' + this.getLastMove.toString() + '; let opponent = 1; ' + code0 + '})()');
+            eval('let getLastMove = ' + this.getLastMove.toString() + '; let opponent = 1; ' + code0 );
             let move0 = move;
-            eval('(function() { let getLastMove = ' + this.getLastMove.toString() + '; let opponent = 0; ' + code1 + '})()');
+            eval('let getLastMove = ' + this.getLastMove.toString() + '; let opponent = 0; ' + code1 );
             let move1 = move;
 
             // Record the moves
