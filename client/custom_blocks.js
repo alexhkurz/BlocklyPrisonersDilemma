@@ -9,7 +9,7 @@ Blockly.defineBlocksWithJsonArray([
     "type": "cooperate",
     "message0": "Cooperate",
     "output": "cooperate",
-    "colour": 60,
+    "colour": 230,
   },
   {
     "type": "if_last_move_cooperate",
@@ -78,18 +78,24 @@ Blockly.JavaScript['cooperate'] = function(block) {
 
 Blockly.JavaScript['first_move'] = function(block) {
   var move = Blockly.JavaScript.valueToCode(block, 'MOVE', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'if (round === 0) { return ' + move + '; }';
+  var code = 'if (round === 0) { return ' + move + '; }\n';
   return code;
 };
 
 Blockly.JavaScript['loop'] = function(block) {
   var statements = Blockly.JavaScript.statementToCode(block, 'STATEMENTS');
-  var code = 'if (round > 0) { ' + statements + ' }';
+  var code = 'if (round > 0) { \n' + statements + ' }\n';
   return code;
 };
 
 Blockly.JavaScript['if_last_move_cooperate'] = function(block) {
   var move = Blockly.JavaScript.valueToCode(block, 'MOVE', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'if (getLastMove(opponent) === "cooperate") { return ' + move + '; }';
+  var code = 'if (getLastMove(opponent) === "cooperate") { return ' + move + '; }\n';
+  return code;
+};
+
+Blockly.JavaScript['if_last_move_defect'] = function(block) {
+  var move = Blockly.JavaScript.valueToCode(block, 'MOVE', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'if (getLastMove(opponent) === "defect") { return ' + move + '; }\n';
   return code;
 };
