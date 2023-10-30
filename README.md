@@ -13,7 +13,7 @@ Go to http://35.91.83.141/ in two different browsers.
 
 You can design a strategy and play an iterated prisoners dilemma against your opponent.
 
-This has been tested only for Tit-for-Tat and only for two players.
+This has been tested only for [Tit-for-Tat](img/TitForTat.png) and only for two players.
 
 ## To install
 
