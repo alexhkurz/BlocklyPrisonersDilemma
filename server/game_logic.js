@@ -52,12 +52,12 @@ module.exports = {
         // Run the game for a certain number of rounds
         for (let round = 0; round < this.env.numberOfRounds; round++) {
             // Wrap the code in a function before executing
-            let move1 = eval('(function() { let getLastMove = ' + this.getLastMove.toString() + '; let opponent = 1; ' + code1 + '})()');
-            let move2 = eval('(function() { let getLastMove = ' + this.getLastMove.toString() + '; let opponent = 0; ' + code2 + '})()');
+            let move0 = eval('(function() { let getLastMove = ' + this.getLastMove.toString() + '; let opponent = 1; ' + code1 + '})()');
+            let move1 = eval('(function() { let getLastMove = ' + this.getLastMove.toString() + '; let opponent = 0; ' + code2 + '})()');
 
             // Record the moves
+            this.recordMove(0, move0);
             this.recordMove(1, move1);
-            this.recordMove(2, move2);
 
             // Update the payoff
             let payoff1 = this.env.gameMatrix[move1][move2][0];
