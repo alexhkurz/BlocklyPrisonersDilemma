@@ -1,7 +1,7 @@
 module.exports = {
     env: {
         // The global state of the game
-        players: [], // An array to store the players
+        players: [], // An array to store the 2 players
         moves: [], // An array to store the moves of the players
         gameMatrix: { // The game matrix
             'cooperate': {
