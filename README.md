@@ -2,7 +2,7 @@
 
 https://github.com/alexhkurz/BlocklyPrisonersDilemma
 
-This has been developed illustrate how to tie a Blockly DSL to a backend that can be communicated with via HTTP requests.
+An example of how to tie a Blockly DSL to a backend that can be communicated with via HTTP requests.
 
 ## Functionality
 
