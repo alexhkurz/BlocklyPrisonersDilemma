@@ -15,34 +15,6 @@ module.exports = {
         },
         numberOfRounds: 5, // The number of rounds in the game
         payoff: [0, 0], // The payoff for each player
-    },
-
-    // A function to add a player to the game
-    addPlayer: function(player) {
-        this.env.players.push(player);
-    },
-
-    // A function to record a move
-    recordMove: function(player, move) {
-        this.env.moves.push({player: player, move: move});
-    },
-
-    env: {
-        // The global state of the game
-        players: [], // An array to store the players
-        moves: [], // An array to store the moves of the players
-        gameMatrix: { // The game matrix
-            'cooperate': {
-                'cooperate': [2, 2], 
-                'defect': [0, 3] 
-            },
-            'defect': {
-                'cooperate': [3, 0], 
-                'defect': [1, 1] 
-            }
-        },
-        numberOfRounds: 5, // The number of rounds in the game
-        payoff: [0, 0], // The payoff for each player
 
         // A function to get the last move of a player
         getLastMove: function(player) {
@@ -53,6 +25,18 @@ module.exports = {
             }
             return null;
         },
+    },
+
+
+
+    // A function to add a player to the game
+    addPlayer: function(player) {
+        this.env.players.push(player);
+    },
+
+    // A function to record a move
+    recordMove: function(player, move) {
+        this.env.moves.push({player: player, move: move});
     },
 
     // A function to reset the game
