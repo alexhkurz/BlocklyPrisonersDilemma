@@ -5,12 +5,12 @@ module.exports = {
         moves: [], // An array to store the moves of the players
         gameMatrix: { // The game matrix
             'cooperate': {
-                'cooperate': [2, 2], // The values when both players cooperate
-                'defect': [0, 3] // The values when player 1 cooperates and player 2 defects
+                'cooperate': [2, 2], 
+                'defect': [0, 3] 
             },
             'defect': {
-                'cooperate': [3, 0], // The values when player 1 defects and player 2 cooperates
-                'defect': [1, 1] // The values when both players defect
+                'cooperate': [3, 0], 
+                'defect': [1, 1] 
             }
         },
     },
