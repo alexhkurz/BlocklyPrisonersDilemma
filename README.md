@@ -28,3 +28,55 @@ node server.js
 ```
 
 Once you followed the steps above, you should be able to access http://localhost:3000/
+
+## To deploy at AWS
+
+This is just a rough run down.
+
+Create an AWS instance (I selected all the default settings as of Oct 2023).
+
+```
+ssh -i blocklyPrisonersDilemma.pem ec2-user@XXX.amazonaws.com
+# Install and start apache
+sudo yum update -y  
+sudo yum install httpd -y  
+sudo systemctl start httpd
+sudo systemctl enable httpd
+# Install node
+https://docs.aws.amazon.com/sdk-for-javascript/v2/developer-guide/setting-up-node-on-ec2-instance.html
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.39.5/install.sh | bash
+. ~/.nvm/nvm.sh
+nvm install --lts
+npm install pm2 -g
+```
+
+To connect the apache server with the nodejs server we need a config file. Create `my.conf`
+
+```
+<VirtualHost *:80>
+    ServerName 52.38.65.169
+    ProxyRequests Off
+    ProxyPreserveHost On
+    # Node.js blocklyGameTheory
+    <Location />
+        ProxyPass http://localhost:3000/
+        ProxyPassReverse http://localhost:3000/
+    </Location>
+</VirtualHost>
+```
+
+
+Copy files to AWS
+```
+scp -r -i blocklyPrisonersDilemma.pem my.conf ec2-user@XXX.amazonaws.com:/home/ec2-user
+scp -r -i blocklyPrisonersDilemma.pem client ec2-user@ec2-35-91-83-141.us-west-2.compute.amazonaws.com:/home/ec2-user
+scp -r -i blocklyPrisonersDilemma.pem server ec2-user@ec2-35-91-83-141.us-west-2.compute.amazonaws.com:/home/ec2-user
+```
+
+In your AWS instance run:
+```
+sudo mv my.conf /etc/httpd/conf.d/
+cd server
+npm install
+pm2 start server.js
+```
