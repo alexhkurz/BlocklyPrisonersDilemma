@@ -77,7 +77,7 @@ module.exports = {
         // Return the result
         return {
             index: this.env.payoff[0] > this.env.payoff[1] ? 0 : 1,
-            logs: this.env.moves
+            logs: this.env.moves || [] // If moves is undefined, set to empty array
         };
     }
 };

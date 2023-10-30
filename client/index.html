@@ -13,7 +13,8 @@
         <div>
             <p>
                 <a href="https://github.com/alexhkurz/BlocklyPrisonersDilemma" target="_blank">
-                    <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"alt="GitHub Logo" width="20"    height="20">
+                    <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"
+                        alt="GitHub Logo" width="20" height="20">
                     View Source
                 </a>
             </p>
@@ -33,6 +34,7 @@
             <button onclick="generateCode()">Send Blocks</button>
             <button onclick="saveBlocks()">Save Blocks</button>
             <button onclick="loadBlocks()">Load Blocks</button>
+            <button onclick="restart()">Reset Player ID's</button>
             <input type="file" id="loadInput" style="display: none;" onchange="loadBlocksFile(event)">
         </div>
         <div class="row flex-between">
@@ -57,18 +59,18 @@
                 },
                 body: JSON.stringify({ code: code }),
             })
-            .then(response => response.json())
-            .then(data => {
-                console.log(data);
-                let output = Array.isArray(data.output) ? data.output : [data.output];
-                let logs = Array.isArray(data.logs) ? data.logs : [];
-                let moves = logs.map(log => `Player ${log.player}: ${log.move}`).join('\n');
-                let payoff = data.payoff ? `Payoff: ${data.payoff.join(', ')}` : '';
-                document.getElementById('outputDiv').innerText = moves + '\n' + payoff;
-            })
-            .catch((error) => {
-                console.error('Error:', error);
-            });
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    let output = Array.isArray(data.output) ? data.output : [data.output];
+                    let logs = Array.isArray(data.logs) ? data.logs : [];
+                    let moves = logs.map(log => `Player ${log.player}: ${log.move}`).join('\n');
+                    let payoff = data.payoff ? `Payoff: ${data.payoff.join(', ')}` : '';
+                    document.getElementById('outputDiv').innerText = moves + '\n' + payoff;
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
         }
 
         function saveBlocks() {
@@ -95,8 +97,27 @@
             reader.readAsText(file);
         }
 
+        function restart() {
+            fetch('/restart').then((res) => {
+                console.log(res);
+            }).catch((err) => {
+                console.error(err);
+            });
+        }
+
+        // Register user in backend upon connecting (executes once JS is loaded)
+        fetch('/register', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({}),
+        }).then((res) => {
+            console.log(res);
+        }).catch((err) => {
+            console.error(err);
+        })
     </script>
 </body>
 
 </html>
-

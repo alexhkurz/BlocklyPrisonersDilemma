@@ -14,33 +14,49 @@ app.use(express.json()); // for parsing application/json
 const crypto = require('crypto');
 const secret = crypto.randomBytes(64).toString('hex');
 
+// Session allows you to set Server-sided "cookies"
+// Req now has a session attribute
 app.use(session({
-  secret: secret,
-  resave: false,
-  saveUninitialized: true
+    secret: secret,
+    resave: false,
+    saveUninitialized: true
 }));
 
 let sessionToPlayer = {};
 let nextPlayerId = 0;
+let gameDone = false
+let gameIndex = undefined
+let gameLogs = undefined
 
-app.use((req, res, next) => {
-  if (req.session.playerId === undefined) {
-    if (nextPlayerId < 2) { 
-      req.session.playerId = nextPlayerId++;
-      sessionToPlayer[req.sessionID] = req.session.playerId;
-      console.log(`Player ${req.session.playerId} has joined the game.`);
-    } else {
-      res.status(503).send({ error: 'The game is currently full. Please try again later.' });
-      return;
+// When player connects, attempt to register
+app.post('/register', async (req, res, next) => {
+    if (req.session.playerId === undefined) {
+        if (nextPlayerId < 2) {
+            req.session.playerId = nextPlayerId++; // Bind playerID to server-sided session "cookies"
+            sessionToPlayer[req.sessionID] = req.session.playerId;
+            console.log(`Player ${req.session.playerId} has joined the game.`);
+
+            // Send player ID and message back to user
+            res.status(200).send({
+                playerId: req.session.playerId,
+                message: `Registered as player ${req.session.playerId}`
+            })
+        } else {
+            res.status(503).send({
+                error: 'The game is currently full. Please try again later.'
+            });
+            // return;
+        }
     }
-  }
-  const chalk = require('chalk');
-  console.log('Session ID:', req.sessionID, '\n', chalk.blue('Player ID:'), req.session.playerId);
-  next();
+    const chalk = require('chalk');
+    console.log('Session ID:', req.sessionID, '\n', chalk.blue('Player ID:'), req.session.playerId);
+    next();
 });
+
 
 let playerCodes = {};
 
+// Respond to request from one client
 app.post('/execute', async (req, res) => {
     console.log("Received request to /execute endpoint");
     let { code } = req.body;
@@ -51,13 +67,18 @@ app.post('/execute', async (req, res) => {
 
     console.log("Player codes: ", playerCodes); // Log the player codes
 
+    // Players ready, run game
     if (playerCodes[0] && playerCodes[1]) {
         console.log("Both players have submitted their code. Running the game..."); // Log before running the game
         try {
             let { index, logs } = runGame(playerCodes[0], playerCodes[1]);
-            logs = logs || []; // Ensure logs is always an array
-            console.log("Execution result: ", { output: index, logs: logs, payoff: gameLogic.env.payoff });
-            res.status(200).send({ output: index, logs: logs, payoff: gameLogic.env.payoff });
+            gameIndex = index
+            gameLogs = logs
+            gameDone = true
+
+            // Send the result back to the client (only this client's response)
+            console.log("Execution result: ", { output: gameIndex, logs: gameLogs, payoff: gameLogic.env.payoff });
+            res.status(200).send({ output: gameIndex, logs: gameLogs, payoff: gameLogic.env.payoff });
         } catch (error) {
             console.error("Error executing code: ", error.message);
             res.status(500).send({ error: error.message });
@@ -68,14 +89,32 @@ app.post('/execute', async (req, res) => {
         playerCodes = {};
     } else {
         console.log("Waiting for the other player to submit their code."); // Log when waiting for the other player
-        res.status(200).send({ message: 'Code received, waiting for other player.' });
+        // Wait 10 seconds for other player response
+        for (let i = 0; i < 10; i++) {
+            await new Promise((res) => { setTimeout(res, 1000); }); // Wait 1 second
+            console.log(`Checking if game done (${i})`)
+            if (gameDone) {
+                console.log('Game done! Sending game result to client')
+                res.status(200).send({
+                    message: 'Got other player response.',
+                    output: gameIndex,
+                    logs: gameLogs,
+                    payoff: gameLogic.env.payoff
+                });
+                gameDone = false
+                return;
+            }
+        }
+        console.log('Game done not detected, returning to client')
+        res.status(200).send({ message: `Did not receive other player code yet. Standing by` });
     }
 });
 
 app.get('/restart', async (req, res) => {
     console.log("Received request to /restart endpoint");
     try {
-        reset();
+        nextPlayerId = 0;
+        // reset();
         console.log('Variables after restart:', env);
         res.status(200).send({ message: 'Game restarted' });
     } catch (error) {
