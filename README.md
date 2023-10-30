@@ -2,6 +2,8 @@
 
 https://github.com/alexhkurz/BlocklyPrisonersDilemma
 
+This has been developed illustrate how to tie a Blockly DSL to a backend that can be communicated with via HTTP requests.
+
 ## Functionality
 
 - Design a strategy for the iterated prisoners' dilemma.
@@ -34,6 +36,8 @@ Once you followed the steps above, you should be able to access http://localhost
 This is just a rough run down.
 
 Create an AWS instance (I selected all the default settings as of Oct 2023).
+
+In a terminal on your machine log into your AWS instance:
 
 ```
 ssh -i blocklyPrisonersDilemma.pem ec2-user@XXX.amazonaws.com
@@ -69,8 +73,8 @@ To connect the apache server with the nodejs server we need a config file. Creat
 Copy files to AWS
 ```
 scp -r -i blocklyPrisonersDilemma.pem my.conf ec2-user@XXX.amazonaws.com:/home/ec2-user
-scp -r -i blocklyPrisonersDilemma.pem client ec2-user@ec2-35-91-83-141.us-west-2.compute.amazonaws.com:/home/ec2-user
-scp -r -i blocklyPrisonersDilemma.pem server ec2-user@ec2-35-91-83-141.us-west-2.compute.amazonaws.com:/home/ec2-user
+scp -r -i blocklyPrisonersDilemma.pem client ec2-user@XXX.amazonaws.com:/home/ec2-user
+scp -r -i blocklyPrisonersDilemma.pem server ec2-user@XXX.amazonaws.com:/home/ec2-user
 ```
 
 In your AWS instance run:
