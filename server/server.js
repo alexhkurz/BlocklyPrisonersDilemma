@@ -44,7 +44,7 @@ app.post('/register', async (req, res, next) => {
             })
         } else {
             res.status(503).send({
-                error: 'The game is currently full. Please try again later.'
+                message: 'The game is currently full. Please try again later.'
             });
             // return;
         }
