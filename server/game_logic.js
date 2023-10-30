@@ -49,18 +49,21 @@ module.exports = {
         // Reset the game
         this.reset();
 
-        // Execute the code of the two players
-        let move1 = eval(code1);
-        let move2 = eval(code2);
+        // Run the game for a certain number of rounds
+        for (let round = 0; round < this.env.numberOfRounds; round++) {
+            // Execute the code of the two players
+            let move1 = eval(code1);
+            let move2 = eval(code2);
 
-        // Record the moves
-        this.recordMove(1, move1);
-        this.recordMove(2, move2);
+            // Record the moves
+            this.recordMove(1, move1);
+            this.recordMove(2, move2);
 
-        // Update the payoff
-        let payoff1 = this.env.gameMatrix[move1][move2][0];
-        let payoff2 = this.env.gameMatrix[move1][move2][1];
-        this.env.payoff[0] += payoff1;
-        this.env.payoff[1] += payoff2;
+            // Update the payoff
+            let payoff1 = this.env.gameMatrix[move1][move2][0];
+            let payoff2 = this.env.gameMatrix[move1][move2][1];
+            this.env.payoff[0] += payoff1;
+            this.env.payoff[1] += payoff2;
+        }
     }
 };
