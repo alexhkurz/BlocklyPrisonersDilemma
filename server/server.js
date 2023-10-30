@@ -49,7 +49,10 @@ app.post('/execute', async (req, res) => {
 
     playerCodes[playerId] = code;
 
+    console.log("Player codes: ", playerCodes); // Log the player codes
+
     if (playerCodes[0] && playerCodes[1]) {
+        console.log("Both players have submitted their code. Running the game..."); // Log before running the game
         try {
             let { index, logs } = runGame(playerCodes[0], playerCodes[1]);
             console.log("Execution result: ", { output: index, logs: logs });
@@ -63,6 +66,7 @@ app.post('/execute', async (req, res) => {
         // Reset playerCodes
         playerCodes = {};
     } else {
+        console.log("Waiting for the other player to submit their code."); // Log when waiting for the other player
         res.status(200).send({ message: 'Code received, waiting for other player.' });
     }
 });
