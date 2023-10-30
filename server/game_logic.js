@@ -60,8 +60,8 @@ module.exports = {
             this.recordMove(1, move1);
 
             // Update the payoff
-            let payoff0 = this.env.gameMatrix[move1][move2][0];
-            let payoff1 = this.env.gameMatrix[move1][move2][1];
+            let payoff0 = this.env.gameMatrix[move0][move1][0];
+            let payoff1 = this.env.gameMatrix[move0][move1][1];
             this.env.payoff[0] += payoff0;
             this.env.payoff[1] += payoff1;
         }
