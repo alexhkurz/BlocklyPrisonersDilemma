@@ -16,8 +16,9 @@ Blockly.defineBlocksWithJsonArray([
     "message0": "If last move was cooperate %1",
     "args0": [
       {
-        "type": "input_statement",
-        "name": "STATEMENTS"
+        "type": "input_value",
+        "name": "MOVE",
+        "check": ["defect", "cooperate"]
       }
     ],
     "previousStatement": null,
