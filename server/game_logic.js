@@ -49,6 +49,9 @@ module.exports = {
         // Reset the game
         this.reset();
 
+        // Initialize the moves array
+        this.env.moves = [];
+
         // Run the game for a certain number of rounds
         for (let round = 0; round < this.env.numberOfRounds; round++) {
             // Define the move variable
