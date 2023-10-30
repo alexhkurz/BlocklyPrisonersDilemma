@@ -25,7 +25,7 @@ let nextPlayerId = 0;
 
 app.use((req, res, next) => {
   if (req.session.playerId === undefined) {
-    if (nextPlayerId < 2) { // Change N to 2, as we only want two players
+    if (nextPlayerId < 2) { 
       req.session.playerId = nextPlayerId++;
       sessionToPlayer[req.sessionID] = req.session.playerId;
       console.log(`Player ${req.session.playerId} has joined the game.`);
@@ -74,8 +74,7 @@ app.post('/execute', async (req, res) => {
 app.get('/restart', async (req, res) => {
     console.log("Received request to /restart endpoint");
     try {
-        gameLogic.make_initial_variables();
-        runGame();
+        reset();
         console.log('Variables after restart:', env);
         res.status(200).send({ message: 'Game restarted' });
     } catch (error) {

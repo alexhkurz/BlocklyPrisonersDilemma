@@ -15,19 +15,17 @@ module.exports = {
         },
         numberOfRounds: 5, // The number of rounds in the game
         payoff: [0, 0], // The payoff for each player
-
-        // A function to get the last move of a player
-        getLastMove: function(player) {
-            for (let i = this.moves.length - 1; i >= 0; i--) {
-                if (this.moves[i].player === player) {
-                    return this.moves[i].move;
-                }
-            }
-            return null;
-        },
     },
 
-
+    // A function to get the last move of a player
+    getLastMove: function(player) {
+        for (let i = this.env.moves.length - 1; i >= 0; i--) {
+            if (this.env.moves[i].player === player) {
+                return this.env.moves[i].move;
+            }
+        }
+        return null;
+    },
 
     // A function to add a player to the game
     addPlayer: function(player) {
@@ -51,19 +49,18 @@ module.exports = {
         // Reset the game
         this.reset();
 
-        // Initialize the moves array
-        this.env.moves = [];
-
         // Run the game for a certain number of rounds
         for (let round = 0; round < this.env.numberOfRounds; round++) {
-            let move;
+            let move; // move is used in the Blockly code
             // Player 0
-            let opponent = 1;
-            let lastOpponentMove = getLastMove(opponent);
-            // Execute the code
-            eval(code0);
+            var opponent = 1;
+            var lastOpponentMove = this.getLastMove(opponent); // lastOpponentMove is used in the Blockly code
+            eval(code0); // Execute the Blockly code to compute move of Player 0
             let move0 = move;
-            eval('let getLastMove = ' + this.env.getLastMove.toString() + '; let opponent = 0; ' + code1 );
+            // Player 1
+            var opponent = 0;
+            var lastOpponentMove = this.getLastMove(opponent);
+            eval(code1); // Execute the Blockly code to compute move of Player 1
             let move1 = move;
 
             // Record the moves
