@@ -4,7 +4,7 @@ https://github.com/alexhkurz/BlocklyPrisonersDilemma
 
 An example of how to tie a Blockly DSL to a backend that can be communicated with via HTTP requests.
 
-The example provides a very rudimentary DSL for designing a strategy that plays the [iterated prisoner's dilemma](https://en.wikipedia.org/wiki/Prisoner's_dilemma#The_iterated_prisoner's_dilemma). The implemented [payoff matrix](https://github.com/alexhkurz/BlocklyPrisonersDilemma/blob/main/server/game_logic.js#L6) is based on payoffs $3>2>1>0$.
+The example provides a very rudimentary DSL for designing a strategy that plays the [iterated prisoner's dilemma](https://en.wikipedia.org/wiki/Prisoner's_dilemma#The_iterated_prisoner's_dilemma). There are currently only [2 players](https://github.com/alexhkurz/BlocklyPrisonersDilemma/blob/3f6d29c2cce43c15c653d3d7216ce1f3b76d8112/server/game_logic.js#L4) allowed. The implemented [payoff matrix](https://github.com/alexhkurz/BlocklyPrisonersDilemma/blob/main/server/game_logic.js#L6) is based on payoffs $3>2>1>0$. The game always runs for [`numberOfRounds`](https://github.com/alexhkurz/BlocklyPrisonersDilemma/blob/3f6d29c2cce43c15c653d3d7216ce1f3b76d8112/server/game_logic.js#L16) rounds (the length of a game should be probabilistic).
 
 ## Functionality
 
