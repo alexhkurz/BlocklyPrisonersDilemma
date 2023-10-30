@@ -15,7 +15,7 @@ You can design a strategy and play an iterated prisoners dilemma against your op
 
 This has been tested only for [Tit-for-Tat](img/TitForTat.png) and only for two players.
 
-## To install
+## To install locally
 
 Fork this repo.
 
@@ -27,4 +27,4 @@ npm i
 node server.js
 ```
 
-http://localhost:3000/
+Once you followed the steps above, you should be able to access http://localhost:3000/
