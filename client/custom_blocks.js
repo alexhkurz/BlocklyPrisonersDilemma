@@ -36,5 +36,19 @@ Blockly.defineBlocksWithJsonArray([
     "previousStatement": null,
     "nextStatement": null,
     "colour": 120,
+  },
+  {
+    "type": "first_move",
+    "message0": "First move %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "MOVE",
+        "check": ["defect", "cooperate"]
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 90,
   }
 ]);
