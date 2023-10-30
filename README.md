@@ -4,16 +4,18 @@ https://github.com/alexhkurz/BlocklyPrisonersDilemma
 
 An example of how to tie a Blockly DSL to a backend that can be communicated with via HTTP requests.
 
+The example provides a very rudimentary DSL for designing a strategy that plays the [iterated prisoner's dilemma](https://en.wikipedia.org/wiki/Prisoner's_dilemma#The_iterated_prisoner's_dilemma). The implemented [payoff matrix](https://github.com/alexhkurz/BlocklyPrisonersDilemma/blob/main/server/game_logic.js#L6) is based on payoffs $3>2>1>0$.
+
 ## Functionality
 
-- Design a strategy for the iterated prisoners' dilemma.
+- Design a strategy for the iterated prisoner's dilemma.
 - Play your strategy against another one.
 
 ## To see what it does
 
 Go to http://35.91.83.141/ in two different browsers. 
 
-You can design a strategy and play an iterated prisoners dilemma against your opponent.
+You can design a strategy and play an iterated prisoner's dilemma against your opponent.
 
 This has been tested only for [Tit-for-Tat](img/TitForTat.png) and only for two players.
 
