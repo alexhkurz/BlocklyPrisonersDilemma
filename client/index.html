@@ -35,6 +35,7 @@
             <button onclick="saveBlocks()">Save Blocks</button>
             <button onclick="loadBlocks()">Load Blocks</button>
             <button onclick="restart()">Reset Player ID's</button>
+            <button onclick="register()">Register</button>
             <input type="file" id="loadInput" style="display: none;" onchange="loadBlocksFile(event)">
         </div>
         <div class="row flex-between">
@@ -105,18 +106,20 @@
             });
         }
 
-        // Register user in backend upon connecting (executes once JS is loaded)
-        fetch('/register', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-            },
-            body: JSON.stringify({}),
-        }).then((res) => {
-            console.log(res);
-        }).catch((err) => {
-            console.error(err);
-        })
+        function register() {
+            // Register user in backend upon connecting
+            fetch('/register', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({}),
+            }).then((res) => {
+                console.log(res);
+            }).catch((err) => {
+                console.error(err);
+            })
+        }
     </script>
 </body>
 
