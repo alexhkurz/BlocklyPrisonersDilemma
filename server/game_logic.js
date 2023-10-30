@@ -41,5 +41,26 @@ module.exports = {
     reset: function() {
         this.env.players = [];
         this.env.moves = [];
+        this.env.payoff = [0, 0];
+    },
+
+    // A function to run the game
+    runGame: function(code1, code2) {
+        // Reset the game
+        this.reset();
+
+        // Execute the code of the two players
+        let move1 = eval(code1);
+        let move2 = eval(code2);
+
+        // Record the moves
+        this.recordMove(1, move1);
+        this.recordMove(2, move2);
+
+        // Update the payoff
+        let payoff1 = this.env.gameMatrix[move1][move2][0];
+        let payoff2 = this.env.gameMatrix[move1][move2][1];
+        this.env.payoff[0] += payoff1;
+        this.env.payoff[1] += payoff2;
     }
 };
