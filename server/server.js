@@ -55,6 +55,7 @@ app.post('/execute', async (req, res) => {
         console.log("Both players have submitted their code. Running the game..."); // Log before running the game
         try {
             let { index, logs } = runGame(playerCodes[0], playerCodes[1]);
+            logs = logs || []; // Ensure logs is always an array
             console.log("Execution result: ", { output: index, logs: logs, payoff: gameLogic.env.payoff });
             res.status(200).send({ output: index, logs: logs, payoff: gameLogic.env.payoff });
         } catch (error) {
