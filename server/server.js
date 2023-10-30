@@ -45,9 +45,9 @@ app.post('/execute', async (req, res) => {
     console.log("Received request to /execute endpoint");
     let { code } = req.body;
     let playerId = req.session.playerId;
-    console.log(`Received code from player ${playerId + 1}:\n`, code); // Log the received code
+    console.log(`Received code from player ${playerId}:\n`, code); // Log the received code
 
-    playerCodes[playerId + 1] = code;
+    playerCodes[playerId] = code;
 
     if (playerCodes[0] && playerCodes[1]) {
         try {
