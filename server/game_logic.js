@@ -51,9 +51,14 @@ module.exports = {
 
         // Run the game for a certain number of rounds
         for (let round = 0; round < this.env.numberOfRounds; round++) {
-            // Wrap the code in a function before executing
-            let move0 = eval('(function() { let getLastMove = ' + this.getLastMove.toString() + '; let opponent = 1; ' + code0 + '})()');
-            let move1 = eval('(function() { let getLastMove = ' + this.getLastMove.toString() + '; let opponent = 0; ' + code1 + '})()');
+            // Define the move variable
+            let move;
+
+            // Execute the code
+            eval('(function() { let getLastMove = ' + this.getLastMove.toString() + '; let opponent = 1; ' + code0 + '})()');
+            let move0 = move;
+            eval('(function() { let getLastMove = ' + this.getLastMove.toString() + '; let opponent = 0; ' + code1 + '})()');
+            let move1 = move;
 
             // Record the moves
             this.recordMove(0, move0);
