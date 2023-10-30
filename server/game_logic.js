@@ -56,11 +56,12 @@ module.exports = {
 
         // Run the game for a certain number of rounds
         for (let round = 0; round < this.env.numberOfRounds; round++) {
-            // Define the move variable
             let move;
-
+            // Player 0
+            let opponent = 1;
+            let lastOpponentMove = getLastMove(opponent);
             // Execute the code
-            eval('let getLastMove = ' + this.env.getLastMove.toString() + '; let opponent = 1; ' + code0 );
+            eval(code0);
             let move0 = move;
             eval('let getLastMove = ' + this.env.getLastMove.toString() + '; let opponent = 0; ' + code1 );
             let move1 = move;

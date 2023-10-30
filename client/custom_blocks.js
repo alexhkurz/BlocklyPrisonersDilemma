@@ -90,12 +90,12 @@ Blockly.JavaScript.forBlock['loop'] = function(block) {
 
 Blockly.JavaScript.forBlock['if_last_move_cooperate'] = function(block) {
   var move = Blockly.JavaScript.valueToCode(block, 'MOVE', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'if (getLastMove(opponent) === "cooperate") { ' + move + ' }\n';
+  var code = 'if (lastOpponentMove === "cooperate") { ' + move + ' }\n';
   return code;
 };
 
 Blockly.JavaScript.forBlock['if_last_move_defect'] = function(block) {
   var move = Blockly.JavaScript.valueToCode(block, 'MOVE', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'if (getLastMove(opponent) === "defect") { ' + move + ' }\n';
+  var code = 'if (lastOpponentMove === "defect") { ' + move + ' }\n';
   return code;
 };
