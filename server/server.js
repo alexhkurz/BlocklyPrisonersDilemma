@@ -49,6 +49,7 @@ app.post('/execute', async (req, res) => {
         console.error("Error executing code: ", error.message);
         res.status(500).send({ error: error.message });
     }
+    console.log("Finished processing /execute request");
 });
 
 app.get('/restart', async (req, res) => {
@@ -62,6 +63,7 @@ app.get('/restart', async (req, res) => {
         console.error("Error restarting game: ", error.message);
         res.status(500).send({ error: error.message });
     }
+    console.log("Finished processing /restart request");
 });
 
 const WebSocket = require('ws');
