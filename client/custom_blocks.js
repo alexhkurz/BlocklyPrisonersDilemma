@@ -13,7 +13,7 @@ Blockly.defineBlocksWithJsonArray([
   },
   {
     "type": "if_last_move_cooperate",
-    "message0": "If last move was cooperate %1",
+    "message0": "If opponent did cooperate %1",
     "args0": [
       {
         "type": "input_value",
@@ -27,7 +27,7 @@ Blockly.defineBlocksWithJsonArray([
   },
   {
     "type": "if_last_move_defect",
-    "message0": "If last move was defect %1",
+    "message0": "If opponent did defect %1",
     "args0": [
       {
         "type": "input_value",
@@ -78,7 +78,7 @@ Blockly.JavaScript.forBlock['cooperate'] = function(block) {
 
 Blockly.JavaScript.forBlock['first_move'] = function(block) {
   var move = Blockly.JavaScript.valueToCode(block, 'MOVE', Blockly.JavaScript.ORDER_ATOMIC);
-  var code = 'if (round === 0) { ' + move + '; }\n';
+  var code = 'if (round === 0) { ' + move + ' }\n';
   return code;
 };
 
