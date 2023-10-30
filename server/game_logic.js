@@ -13,7 +13,7 @@ module.exports = {
                 'defect': [1, 1] 
             }
         },
-        numberOfRounds: 0, // The number of rounds in the game
+        numberOfRounds: 5, // The number of rounds in the game
         payoff: [0, 0], // The payoff for each player
     },
 
