@@ -69,7 +69,7 @@ app.get('/restart', async (req, res) => {
 let PORT = process.env.PORT || 3000;
 
 const startServer = (port) => {
-    server.listen(port, () => console.log(`Server started at http://localhost:${port}`))
+    const server = app.listen(port, () => console.log(`Server started at http://localhost:${port}`))
         .on('error', (err) => {
             if (err.code === 'EADDRINUSE') {
                 console.log(`Port ${port} is in use, trying with port ${port + 1}`);
