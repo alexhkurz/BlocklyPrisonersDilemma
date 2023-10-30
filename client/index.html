@@ -61,7 +61,9 @@
             .then(data => {
                 console.log(data);
                 let output = Array.isArray(data.output) ? data.output : [data.output];
-                document.getElementById('outputDiv').innerText = 'Output: ' + output.join(', ');
+                let moves = data.logs.map(log => `Player ${log.player}: ${log.move}`).join('\n');
+                let payoff = `Payoff: ${data.payoff.join(', ')}`;
+                document.getElementById('outputDiv').innerText = 'Output: ' + output.join(', ') + '\nMoves:\n' + moves + '\n' + payoff;
             })
             .catch((error) => {
                 console.error('Error:', error);
