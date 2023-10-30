@@ -63,7 +63,7 @@
                 let output = Array.isArray(data.output) ? data.output : [data.output];
                 let logs = Array.isArray(data.logs) ? data.logs : [];
                 let moves = logs.map(log => `Player ${log.player}: ${log.move}`).join('\n');
-                let payoff = Array.isArray(data.payoff) ? `Payoff: ${data.payoff.join(', ')}` : '';
+                let payoff = data.payoff ? `Payoff: ${data.payoff.join(', ')}` : '';
                 document.getElementById('outputDiv').innerText = moves + '\n' + payoff;
             })
             .catch((error) => {
