@@ -5,7 +5,8 @@ const path = require('path');
 app.use(express.static(path.join(__dirname, '..', 'client')));
 const gameLogic = require('./game_logic.js');
 const N = gameLogic.N;
-const { runGame, env } = gameLogic;
+const runGame = gameLogic.runGame.bind(gameLogic);
+const env = gameLogic.env;
 
 app.use(express.json()); // for parsing application/json
 
