@@ -39,19 +39,32 @@ app.use((req, res, next) => {
   next();
 });
 
+let playerCodes = {};
+
 app.post('/execute', async (req, res) => {
     console.log("Received request to /execute endpoint");
     let { code } = req.body;
-    console.log("Received code:\n ", code); // Log the received code
-    try {
-        let { index, logs } = runGame(code);
-        console.log("Execution result: ", { output: index, logs: logs });
-        res.status(200).send({ output: index, logs: logs });
-    } catch (error) {
-        console.error("Error executing code: ", error.message);
-        res.status(500).send({ error: error.message });
+    let playerId = req.session.playerId;
+    console.log(`Received code from player ${playerId}:\n`, code); // Log the received code
+
+    playerCodes[playerId] = code;
+
+    if (playerCodes[0] && playerCodes[1]) {
+        try {
+            let { index, logs } = runGame(playerCodes[0], playerCodes[1]);
+            console.log("Execution result: ", { output: index, logs: logs });
+            res.status(200).send({ output: index, logs: logs });
+        } catch (error) {
+            console.error("Error executing code: ", error.message);
+            res.status(500).send({ error: error.message });
+        }
+        console.log("Finished processing /execute request");
+
+        // Reset playerCodes
+        playerCodes = {};
+    } else {
+        res.status(200).send({ message: 'Code received, waiting for other player.' });
     }
-    console.log("Finished processing /execute request");
 });
 
 app.get('/restart', async (req, res) => {
