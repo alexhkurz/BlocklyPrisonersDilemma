@@ -36,10 +36,11 @@ app.post('/register', async (req, res, next) => {
             sessionToPlayer[req.sessionID] = req.session.playerId;
             console.log(`Player ${req.session.playerId} has joined the game.`);
 
-            // Send player ID and message back to user
+            // Send player ID, session ID and message back to user
             res.status(200).send({
                 playerId: req.session.playerId,
-                message: `Registered as player ${req.session.playerId}`
+                sessionId: req.sessionID,
+                message: `Player ${req.session.playerId} has joined the game.\nSession ID: ${req.sessionID}\nPlayer ID: ${req.session.playerId}`
             })
         } else {
             res.status(503).send({
