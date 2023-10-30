@@ -67,3 +67,11 @@ Blockly.defineBlocksWithJsonArray([
     "colour": 20,
   }
 ]);
+
+Blockly.JavaScript['defect'] = function(block) {
+  return ['"defect"', Blockly.JavaScript.ORDER_ATOMIC];
+};
+
+Blockly.JavaScript['cooperate'] = function(block) {
+  return ['"cooperate"', Blockly.JavaScript.ORDER_ATOMIC];
+};
