@@ -13,6 +13,7 @@ module.exports = {
                 'defect': [1, 1] 
             }
         },
+        numberOfRounds: 0, // The number of rounds in the game
     },
 
     // A function to add a player to the game
