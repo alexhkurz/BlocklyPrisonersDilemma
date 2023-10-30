@@ -60,7 +60,8 @@
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                document.getElementById('outputDiv').innerText = 'Output: ' + data.output.join(', ');
+                let output = Array.isArray(data.output) ? data.output : [data.output];
+                document.getElementById('outputDiv').innerText = 'Output: ' + output.join(', ');
             })
             .catch((error) => {
                 console.error('Error:', error);
