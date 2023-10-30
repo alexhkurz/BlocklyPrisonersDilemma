@@ -1,0 +1,15 @@
+{
+  "name": "blocklyprisonersdilemma",
+  "version": "1.0.0",
+  "description": "A game based on the Iterated Prisoner's Dilemma using Blockly",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-session": "^1.17.2",
+    "crypto": "^1.0.1",
+    "ws": "^7.5.5"
+  }
+}
