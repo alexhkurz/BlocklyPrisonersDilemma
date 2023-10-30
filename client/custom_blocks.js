@@ -87,3 +87,9 @@ Blockly.JavaScript['loop'] = function(block) {
   var code = 'if (round > 0) { ' + statements + ' }';
   return code;
 };
+
+Blockly.JavaScript['if_last_move_cooperate'] = function(block) {
+  var move = Blockly.JavaScript.valueToCode(block, 'MOVE', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'if (getLastMove(opponent) === "cooperate") { return ' + move + '; }';
+  return code;
+};
