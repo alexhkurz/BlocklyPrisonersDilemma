@@ -2,13 +2,13 @@ Blockly.defineBlocksWithJsonArray([
   {
     "type": "defect",
     "message0": "Defect",
-    "output": null,
+    "output": "defect",
     "colour": 230,
   },
   {
     "type": "cooperate",
     "message0": "Cooperate",
-    "output": null,
+    "output": "cooperate",
     "colour": 60,
   },
   {
