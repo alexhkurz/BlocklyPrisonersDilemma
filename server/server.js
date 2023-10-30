@@ -38,23 +38,28 @@ app.use((req, res, next) => {
 });
 
 app.post('/execute', async (req, res) => {
+    console.log("Received request to /execute endpoint");
     let { code } = req.body;
     console.log("Received code:\n ", code); // Log the received code
     try {
         let { index, logs } = runGame(code);
+        console.log("Execution result: ", { output: index, logs: logs });
         res.status(200).send({ output: index, logs: logs });
     } catch (error) {
+        console.error("Error executing code: ", error.message);
         res.status(500).send({ error: error.message });
     }
 });
 
 app.get('/restart', async (req, res) => {
+    console.log("Received request to /restart endpoint");
     try {
         gameLogic.make_initial_variables();
         runGame();
         console.log('Variables after restart:', env);
         res.status(200).send({ message: 'Game restarted' });
     } catch (error) {
+        console.error("Error restarting game: ", error.message);
         res.status(500).send({ error: error.message });
     }
 });
