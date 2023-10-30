@@ -1,23 +1,99 @@
 <!DOCTYPE html>
 <html>
+
 <head>
     <title>Iterated Prisoner's Dilemma</title>
     <script src="https://unpkg.com/blockly/blockly.min.js"></script>
     <script src="custom_blocks.js"></script>
+    <link rel="stylesheet" href="style.css">
 </head>
+
 <body>
-    <div id="blocklyDiv" style="height: 480px; width: 600px;"></div>
-    <xml id="toolbox" style="display: none">
-        <block type="defect"></block>
-        <block type="cooperate"></block>
-        <block type="if_last_move_cooperate"></block>
-        <block type="if_last_move_defect"></block>
-        <block type="first_move"></block>
-        <block type="loop"></block>
-    </xml>
+    <div id="main_container">
+        <div>
+            <p>
+                <a href="https://github.com/alexhkurz/BlocklyPrisonersDilemma" target="_blank">
+                    <img src="https://github.githubassets.com/images/modules/logos_page/GitHub-Mark.png"alt="GitHub Logo" width="20"    height="20">
+                    View Source
+                </a>
+            </p>
+        </div>
+        <div class="row flex-between" style="flex-grow: 1;">
+            <div id="myWorkspace" class="full-width"></div>
+            <xml id="toolbox" style="display: none">
+                <block type="defect"></block>
+                <block type="cooperate"></block>
+                <block type="if_last_move_cooperate"></block>
+                <block type="if_last_move_defect"></block>
+                <block type="first_move"></block>
+                <block type="loop"></block>
+            </xml>
+        </div>
+        <div class="button-row">
+            <button onclick="generateCode()">Send Blocks</button>
+            <button onclick="saveBlocks()">Save Blocks</button>
+            <button onclick="loadBlocks()">Load Blocks</button>
+            <input type="file" id="loadInput" style="display: none;" onchange="loadBlocksFile(event)">
+        </div>
+        <div class="row flex-between">
+            <div id="codeDiv" class="half-width"></div>
+            <div id="outputDiv" class="half-width" style="overflow: auto;"></div>
+        </div>
+    </div>
+
     <script>
-        var workspace = Blockly.inject('blocklyDiv',
-            {toolbox: document.getElementById('toolbox')});
+        var workspace = Blockly.inject('myWorkspace',
+            { toolbox: document.getElementById('toolbox') });
+
+        function generateCode() {
+            var code = Blockly.JavaScript.workspaceToCode(workspace);
+            document.getElementById('codeDiv').innerText = code;
+
+            // Send the code to the server
+            fetch('/execute', {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ code: code }),
+            })
+                .then(response => response.json())
+                .then(data => {
+                    console.log(data);
+                    document.getElementById('outputIndex').innerText = 'index: ' + data.output.join(', ');
+                    document.getElementById('outputLogs').innerText = data.logs.join('\n');
+                })
+                .catch((error) => {
+                    console.error('Error:', error);
+                });
+        }
+
+        function saveBlocks() {
+            var xml = Blockly.Xml.workspaceToDom(workspace);
+            var xmlText = Blockly.Xml.domToPrettyText(xml);
+            var blob = new Blob([xmlText], { type: 'text/xml' });
+            var a = document.createElement('a');
+            a.download = 'blocks.xml';
+            a.href = URL.createObjectURL(blob);
+            a.click();
+        }
+
+        function loadBlocks() {
+            document.getElementById('loadInput').click();
+        }
+
+        function loadBlocksFile(event) {
+            var file = event.target.files[0];
+            var reader = new FileReader();
+            reader.onload = function (e) {
+                var xml = Blockly.utils.xml.textToDom(e.target.result);
+                Blockly.Xml.domToWorkspace(xml, workspace);
+            };
+            reader.readAsText(file);
+        }
+
     </script>
 </body>
+
 </html>
+
