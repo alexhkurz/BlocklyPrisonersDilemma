@@ -75,3 +75,9 @@ Blockly.JavaScript['defect'] = function(block) {
 Blockly.JavaScript['cooperate'] = function(block) {
   return ['"cooperate"', Blockly.JavaScript.ORDER_ATOMIC];
 };
+
+Blockly.JavaScript['first_move'] = function(block) {
+  var move = Blockly.JavaScript.valueToCode(block, 'MOVE', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'if (round === 0) { return ' + move + '; }';
+  return code;
+};
