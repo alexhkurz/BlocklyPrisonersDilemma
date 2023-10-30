@@ -81,3 +81,9 @@ Blockly.JavaScript['first_move'] = function(block) {
   var code = 'if (round === 0) { return ' + move + '; }';
   return code;
 };
+
+Blockly.JavaScript['loop'] = function(block) {
+  var statements = Blockly.JavaScript.statementToCode(block, 'STATEMENTS');
+  var code = 'if (round > 0) { ' + statements + ' }';
+  return code;
+};
