@@ -14,6 +14,7 @@ module.exports = {
             }
         },
         numberOfRounds: 0, // The number of rounds in the game
+        payoff: [0, 0], // The payoff for each player
     },
 
     // A function to add a player to the game
