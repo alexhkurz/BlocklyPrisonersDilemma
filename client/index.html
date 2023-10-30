@@ -114,9 +114,13 @@
                     'Content-Type': 'application/json',
                 },
                 body: JSON.stringify({}),
-            }).then((res) => {
-                console.log(res);
-            }).catch((err) => {
+            })
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                document.getElementById('outputDiv').innerText = `Player ${data.playerId} has joined the game.\nSession ID: ${data.sessionId}\nPlayer ID: ${data.playerId}`;
+            })
+            .catch((err) => {
                 console.error(err);
             })
         }
