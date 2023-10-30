@@ -68,33 +68,33 @@ Blockly.defineBlocksWithJsonArray([
   }
 ]);
 
-Blockly.JavaScript['defect'] = function(block) {
+Blockly.JavaScript.forBlock['defect'] = function(block) {
   return ['"defect"', Blockly.JavaScript.ORDER_ATOMIC];
 };
 
-Blockly.JavaScript['cooperate'] = function(block) {
+Blockly.JavaScript.forBlock['cooperate'] = function(block) {
   return ['"cooperate"', Blockly.JavaScript.ORDER_ATOMIC];
 };
 
-Blockly.JavaScript['first_move'] = function(block) {
+Blockly.JavaScript.forBlock['first_move'] = function(block) {
   var move = Blockly.JavaScript.valueToCode(block, 'MOVE', Blockly.JavaScript.ORDER_ATOMIC);
   var code = 'if (round === 0) { return ' + move + '; }\n';
   return code;
 };
 
-Blockly.JavaScript['loop'] = function(block) {
+Blockly.JavaScript.forBlock['loop'] = function(block) {
   var statements = Blockly.JavaScript.statementToCode(block, 'STATEMENTS');
   var code = 'if (round > 0) { \n' + statements + ' }\n';
   return code;
 };
 
-Blockly.JavaScript['if_last_move_cooperate'] = function(block) {
+Blockly.JavaScript.forBlock['if_last_move_cooperate'] = function(block) {
   var move = Blockly.JavaScript.valueToCode(block, 'MOVE', Blockly.JavaScript.ORDER_ATOMIC);
   var code = 'if (getLastMove(opponent) === "cooperate") { return ' + move + '; }\n';
   return code;
 };
 
-Blockly.JavaScript['if_last_move_defect'] = function(block) {
+Blockly.JavaScript.forBlock['if_last_move_defect'] = function(block) {
   var move = Blockly.JavaScript.valueToCode(block, 'MOVE', Blockly.JavaScript.ORDER_ATOMIC);
   var code = 'if (getLastMove(opponent) === "defect") { return ' + move + '; }\n';
   return code;
