@@ -3,6 +3,10 @@ module.exports = {
         // The global state of the game
         players: [], // An array to store the players
         moves: [], // An array to store the moves of the players
+        gameMatrix: [ // The game matrix
+            [2, 0], // The values when both players cooperate or player 1 cooperates and player 2 defects
+            [3, 1]  // The values when player 1 defects and player 2 cooperates or both players defect
+        ],
     },
 
     // A function to add a player to the game
