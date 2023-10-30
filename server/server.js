@@ -66,29 +66,7 @@ app.get('/restart', async (req, res) => {
     console.log("Finished processing /restart request");
 });
 
-const WebSocket = require('ws');
-const http = require('http');
-const server = http.createServer(app);
-const wss = new WebSocket.Server({ server });
 let PORT = process.env.PORT || 3000;
-
-wss.on('connection', (ws) => {
-    ws.on('message', (message) => {
-        // Convert message to string
-        var messageString = message.toString();
-        console.log('Received message:', messageString);
-        // Check if the message is a Blockly workspace XML
-        if (messageString.startsWith('<xml')) {
-            // Broadcast the Blockly workspace XML to the other client
-            wss.clients.forEach((client) => {
-                if (client !== ws && client.readyState === WebSocket.OPEN) {
-                    client.send(message);
-                    console.log('Sent message to a client');
-                }
-            });
-        }
-    });
-});
 
 const startServer = (port) => {
     server.listen(port, () => console.log(`Server started at http://localhost:${port}`))
