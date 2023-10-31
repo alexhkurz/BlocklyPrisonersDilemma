@@ -107,6 +107,7 @@
             })
             .catch((err) => {
                 console.error(err);
+                document.getElementById('outputDiv').innerText = `Error: ${err}`;
             });
         }
 
