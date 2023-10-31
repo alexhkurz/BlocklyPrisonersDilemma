@@ -42,12 +42,12 @@ app.post('/register', async (req, res, next) => {
                 sessionId: req.sessionID,
                 message: `Player ${req.session.playerId} has joined the game.\nSession ID: ${req.sessionID}\nPlayer ID: ${req.session.playerId}`
             })
-        } else {
-            res.status(503).send({
-                message: 'The game is currently full. Please try again later.'
-            });
-            // return;
-        }
+        } 
+    } else {
+        res.status(503).send({
+            message: 'The game is currently full. Please try again later.'
+        });
+        // return;
     }
     const chalk = require('chalk');
     console.log('Session ID:', req.sessionID, '\n', chalk.blue('Player ID:'), req.session.playerId);
