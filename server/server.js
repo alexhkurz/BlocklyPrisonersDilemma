@@ -115,6 +115,8 @@ app.get('/restart', async (req, res) => {
     console.log("Received request to /restart endpoint");
     try {
         nextPlayerId = 0;
+        sessionToPlayer = {};
+        playerCodes = {};
         // reset();
         console.log('Variables after restart:', env);
         res.status(200).send({ message: 'Game restarted' });
