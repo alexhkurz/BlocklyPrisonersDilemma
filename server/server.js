@@ -123,6 +123,9 @@ app.get('/leave', async (req, res) => {
             if (nextPlayerId > 0) {
                 nextPlayerId--;
             }
+            if (numberOfPlayers > 0) {
+                numberOfPlayers--; // Decrement the number of players
+            }
             delete sessionToPlayer[req.sessionID];
             req.session.destroy();
             console.log(`Player ${playerId} has left the game.`);
