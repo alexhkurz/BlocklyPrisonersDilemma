@@ -99,9 +99,13 @@
         }
 
         function restart() {
-            fetch('/restart').then((res) => {
-                console.log(res);
-            }).catch((err) => {
+            fetch('/restart')
+            .then(response => response.json())
+            .then(data => {
+                console.log(data);
+                document.getElementById('outputDiv').innerText = JSON.stringify(data, null, 2);
+            })
+            .catch((err) => {
                 console.error(err);
             });
         }
