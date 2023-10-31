@@ -33,7 +33,7 @@ This has been tested only for [Tit-for-Tat](img/TitForTat.png) and only for two 
 
 ## To install locally
 
-Fork this repo.
+Fork this repo. Make a local copy using `git clone`.
 
 Requires [nodejs](https://nodejs.org/en/download).
 
