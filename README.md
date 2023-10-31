@@ -70,10 +70,9 @@ To connect the apache server with the nodejs server we need a config file. Creat
 
 ```
 <VirtualHost *:80>
-    ServerName 52.38.65.169
+    ServerName 35.91.83.141
     ProxyRequests Off
     ProxyPreserveHost On
-    # Node.js blocklyGameTheory
     <Location />
         ProxyPass http://localhost:3000/
         ProxyPassReverse http://localhost:3000/
