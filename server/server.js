@@ -24,6 +24,7 @@ app.use(session({
 
 let sessionToPlayer = {};
 let nextPlayerId = 0;
+let numberOfPlayers = 0; // New variable to keep track of the number of players
 let gameDone = false
 let gameIndex = undefined
 let gameLogs = undefined
