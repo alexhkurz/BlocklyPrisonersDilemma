@@ -35,7 +35,6 @@ app.post('/register', async (req, res, next) => {
             req.session.playerId = nextPlayerId++; // Bind playerID to server-sided session "cookies"
             sessionToPlayer[req.sessionID] = req.session.playerId;
             console.log(`Player ${req.session.playerId} has joined the game.`);
-        }
 
             // Send player ID, session ID and message back to user
             res.status(200).send({
