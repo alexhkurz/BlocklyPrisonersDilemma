@@ -23,18 +23,17 @@ app.use(session({
 }));
 
 let sessionToPlayer = {};
-let nextPlayerId = 0;
-let numberOfPlayers = 0; // New variable to keep track of the number of players
-let gameDone = false
+let nextPlayerId = 0; // Cycles between 0 and 1
+let numberOfPlayers = 0; // 0 or 1 or 2
 let gameIndex = undefined
 let gameLogs = undefined
 
 // When player connects, attempt to register
 app.post('/register', async (req, res, next) => {
     if (req.session.playerId === undefined) {
-        if (nextPlayerId < 2) {
-            req.session.playerId = nextPlayerId % 2; // Bind playerID to server-sided session "cookies"
-            nextPlayerId++;
+        if (numberOfPlayers < 2) {
+            req.session.playerId = nextPlayerId; // Bind playerID to server-sided session "cookies"
+            nextPlayerId = (nextPlayerId+1) % 2;
             numberOfPlayers++; // Increment the number of players
             sessionToPlayer[req.sessionID] = req.session.playerId;
             console.log(`Player ${req.session.playerId} has joined the game.`);
@@ -120,12 +119,8 @@ app.get('/leave', async (req, res) => {
         let playerId = req.session.playerId;
         if (playerId !== undefined) {
             delete playerCodes[playerId];
-            if (nextPlayerId > 0) {
-                nextPlayerId--;
-            }
-            if (numberOfPlayers > 0) {
-                numberOfPlayers--; // Decrement the number of players
-            }
+            nextPlayerId = playerId; // Free the player ID
+            numberOfPlayers--; // Decrement the number of players
             delete sessionToPlayer[req.sessionID];
             req.session.destroy();
             console.log(`Player ${playerId} has left the game.`);
