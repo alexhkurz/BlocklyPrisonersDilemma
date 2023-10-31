@@ -35,6 +35,7 @@ app.post('/register', async (req, res, next) => {
         if (nextPlayerId < 2) {
             req.session.playerId = nextPlayerId % 2; // Bind playerID to server-sided session "cookies"
             nextPlayerId++;
+            numberOfPlayers++; // Increment the number of players
             sessionToPlayer[req.sessionID] = req.session.playerId;
             console.log(`Player ${req.session.playerId} has joined the game.`);
 
