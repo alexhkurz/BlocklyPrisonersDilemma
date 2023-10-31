@@ -38,7 +38,7 @@ Fork this repo.
 Requires [nodejs](https://nodejs.org/en/download).
 
 ```
-cd server
+cd src/server
 npm i
 node server.js
 ```
