@@ -11,16 +11,17 @@ The example provides a very rudimentary DSL for designing a strategy that plays 
 - The DSL is quite minimal; many interesting strategies cannot be expressed.
 - The number of rounds is fixed but should be probabilistic.
 - The number of players is bound by 2.
-- Only the second player gets the result of the game.
+- Sometimes, only the second player gets the result of the game.
 - There is no support for organising tournaments, keeping stats.
 ## Functionality
 
-- Register (makes you known as Player 0 or Player 1 to the server).
+- *Register* (makes you known as Player 0 or Player 1 to the server).
 - Design a strategy by dragging blocks from the toolbox to the workspace.
-- Send Blocks to server.
+- *Send Blocks* to server.
 - After Player 0  and Player 1 sent their strategy, the server plays them against each other.
-- The result is sent back to the players.
-- Leave allows another player to join.
+- The result is sent back to (at least) one of the players.
+- *Leave* allows another player to join.
+- It is possible to *Save Blocks* and to *Load Blocks*.
 
 ## To see what it does
 
