@@ -103,7 +103,7 @@
             .then(response => response.json())
             .then(data => {
                 console.log(data);
-                document.getElementById('outputDiv').innerText = JSON.stringify(data, null, 2);
+                document.getElementById('outputDiv').innerText = `${data.message}`;
             })
             .catch((err) => {
                 console.error(err);
