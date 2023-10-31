@@ -30,8 +30,8 @@ let gameLogs = undefined
 
 // When player connects, attempt to register
 app.post('/register', async (req, res, next) => {
-    if (nextPlayerId < 2) {
-        if (req.session.playerId === undefined) {
+    if (req.session.playerId === undefined) {
+        if (nextPlayerId < 2) {
             req.session.playerId = nextPlayerId++; // Bind playerID to server-sided session "cookies"
             sessionToPlayer[req.sessionID] = req.session.playerId;
             console.log(`Player ${req.session.playerId} has joined the game.`);
