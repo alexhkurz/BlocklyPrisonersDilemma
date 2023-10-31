@@ -15,8 +15,12 @@ The example provides a very rudimentary DSL for designing a strategy that plays 
 - There is no support for organising tournaments, keeping stats.
 ## Functionality
 
-- Design a strategy for the iterated prisoner's dilemma.
-- Play your strategy against another one.
+- Register (makes you known as Player 0 or Player 1 to the server).
+- Design a strategy by dragging blocks from the toolbox to the workspace.
+- Send Blocks to server.
+- After Player 0  and Player 1 sent their strategy, the server plays them against each other.
+- The result is sent back to the players.
+- Leave allows another player to join.
 
 ## To see what it does
 
