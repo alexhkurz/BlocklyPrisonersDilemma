@@ -35,7 +35,7 @@ This has been tested only for [Tit-for-Tat](img/TitForTat.png) and only for two 
 
 Fork this repo.
 
-Requires nodejs.
+Requires [nodejs](https://nodejs.org/en/download).
 
 ```
 cd server
