@@ -35,7 +35,7 @@
             <button onclick="generateCode()">Send Blocks</button>
             <button onclick="saveBlocks()">Save Blocks</button>
             <button onclick="loadBlocks()">Load Blocks</button>
-            <button onclick="restart()">Reset Player ID's</button>
+            <button onclick="leave()">Leave</button>
             <input type="file" id="loadInput" style="display: none;" onchange="loadBlocksFile(event)">
         </div>
         <div class="row flex-between">
@@ -98,8 +98,8 @@
             reader.readAsText(file);
         }
 
-        function restart() {
-            fetch('/restart')
+        function leave() {
+            fetch('/leave')
             .then(response => response.json())
             .then(data => {
                 console.log(data);
