@@ -25,8 +25,9 @@ app.use(session({
 let sessionToPlayer = {};
 let nextPlayerId = 0; // Cycles between 0 and 1
 let numberOfPlayers = 0; // 0 or 1 or 2
-let gameIndex = undefined
-let gameLogs = undefined
+let gameIndex = undefined;
+let gameLogs = undefined;
+let gameDone = false;
 
 // When player connects, attempt to register
 app.post('/register', async (req, res, next) => {
