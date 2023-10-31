@@ -12,9 +12,9 @@ The example provides a very rudimentary DSL for designing a strategy that plays 
 
 - The DSL is quite minimal; many interesting strategies cannot be expressed.
 - The number of rounds is fixed but should be probabilistic.
-- The number of players is bound by 2.
+- The number of players is 2.
 - Sometimes, only the second player gets the result of the game.
-- There is no support for organising tournaments, keeping stats.
+- There is no support for [tournaments](https://cs.stanford.edu/people/eroberts/courses/soco/projects/1998-99/game-theory/axelrod.html) or for keeping stats.
 ## Functionality
 
 - *Register* (makes you known as Player 0 or Player 1 to the server).
