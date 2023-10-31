@@ -48,8 +48,11 @@ app.post('/register', async (req, res, next) => {
             res.status(503).send({
                 message: 'The game is currently full. Please try again later.'
             });
-            // return;
         }
+    } else {
+        res.status(200).send({
+            message: `Player ${req.session.playerId} is already registered.`
+        });
     }
     const chalk = require('chalk');
     console.log('Session ID:', req.sessionID, '\n', chalk.blue('Player ID:'), req.session.playerId);
