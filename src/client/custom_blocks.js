@@ -40,35 +40,18 @@ Blockly.defineBlocksWithJsonArray([
     "colour": 120,
   },
   {
-    "type": "move",
-    "message0": "if move %1 %2 %3",
+    "type": "first_move",
+    "message0": "First move %1",
     "args0": [
       {
-        "type": "field_dropdown",
-        "name": "OPERATOR",
-        "options": [
-          ["==", "==="],
-          ["<", "<"],
-          [">", ">"],
-          ["!=", "!==="]
-        ]
-      },
-      {
-        "type": "field_number",
-        "name": "MOVE_NUMBER",
-        "value": 0
-      },
-      {
-        "type": "input_statement",
-        "name": "STATEMENTS"
+        "type": "input_value",
+        "name": "MOVE",
+        "check": ["defect", "cooperate"]
       }
     ],
-    "inputStatement": {
-        "name": "STATEMENTS"
-    },
     "previousStatement": null,
     "nextStatement": null,
-    "colour": 90
+    "colour": 90,
   },
   {
     "type": "loop",
@@ -93,11 +76,9 @@ Blockly.JavaScript.forBlock['cooperate'] = function(block) {
   return ['move = "cooperate";', Blockly.JavaScript.ORDER_ATOMIC];
 };
 
-Blockly.JavaScript['move'] = function(block) {
-  var operator = block.getFieldValue('OPERATOR');
-  var moveNumber = block.getFieldValue('MOVE_NUMBER');
-  var statements = Blockly.JavaScript.statementToCode(block, 'STATEMENTS');
-  var code = 'if (round ' + operator + ' ' + moveNumber + ') { \n' + statements + ' }\n';
+Blockly.JavaScript.forBlock['first_move'] = function(block) {
+  var move = Blockly.JavaScript.valueToCode(block, 'MOVE', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'if (round === 0) { ' + move + ' }\n';
   return code;
 };
 
