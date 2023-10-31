@@ -111,21 +111,25 @@ app.post('/execute', async (req, res) => {
     }
 });
 
-app.get('/restart', async (req, res) => {
-    console.log("Received request to /restart endpoint");
+app.get('/leave', async (req, res) => {
+    console.log("Received request to /leave endpoint");
     try {
-        nextPlayerId = 0;
-        sessionToPlayer = {};
-        playerCodes = {};
-        playerCodes = {};
-        // reset();
-        console.log('Variables after restart:', env);
-        res.status(200).send({ message: 'Game restarted' });
+        let playerId = req.session.playerId;
+        if (playerId !== undefined) {
+            delete playerCodes[playerId];
+            if (nextPlayerId > 0) {
+                nextPlayerId--;
+            }
+            delete sessionToPlayer[req.sessionID];
+            req.session.destroy();
+            console.log(`Player ${playerId} has left the game.`);
+        }
+        res.status(200).send({ message: 'Player has left the game' });
     } catch (error) {
-        console.error("Error restarting game: ", error.message);
+        console.error("Error processing leave request: ", error.message);
         res.status(500).send({ error: error.message });
     }
-    console.log("Finished processing /restart request");
+    console.log("Finished processing /leave request");
 });
 
 let PORT = process.env.PORT || 3000;
