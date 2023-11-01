@@ -82,7 +82,6 @@ Blockly.defineBlocksWithJsonArray([
   {
     "type": "always_cooperate",
     "message0": "Always Cooperate",
-    "output": "cooperate",
     "colour": 300,
     "previousStatement": null,
     "nextStatement": null
@@ -90,7 +89,6 @@ Blockly.defineBlocksWithJsonArray([
   {
     "type": "always_defect",
     "message0": "Always Defect",
-    "output": "defect",
     "colour": 4000,
     "previousStatement": null,
     "nextStatement": null
