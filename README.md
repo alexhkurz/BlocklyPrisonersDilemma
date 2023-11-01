@@ -12,7 +12,7 @@ An example of how to tie a Blockly DSL to a backend that can be communicated wit
 
 This repository provides a rudimentary DSL for designing a strategy that plays an [iterated prisoner's dilemma](https://en.wikipedia.org/wiki/Prisoner's_dilemma#The_iterated_prisoner's_dilemma). There are currently only [2 players](https://github.com/alexhkurz/BlocklyPrisonersDilemma/blob/61eb62afc027e9879979055424981e01eeb9b42a/src/server/game_logic.js#L4) allowed. The implemented [payoff matrix](https://github.com/alexhkurz/BlocklyPrisonersDilemma/blob/61eb62afc027e9879979055424981e01eeb9b42a/src/server/game_logic.js#L6) is based on payoffs $3>2>1>0$. The game always runs for [`numberOfRounds`](https://github.com/alexhkurz/BlocklyPrisonersDilemma/blob/61eb62afc027e9879979055424981e01eeb9b42a/src/server/game_logic.js#L16) rounds.
 
-**Some Limitations:**
+### Limitations
 
 - The DSL is quite minimal; many interesting strategies cannot be expressed.
 - The number of rounds is fixed but should be probabilistic.
@@ -61,7 +61,7 @@ If you have questions, raise an [issue](https://github.com/alexhkurz/BlocklyPris
 
 ## Understanding the Backend with the VSCode Debugger
 
-Being able to work with a debugger is an essential skill. We went through the followin in detail in class.
+Being able to work with a debugger is an essential skill. We went through the following in detail in class.
 
 Make sure to open your local copy of your fork in VSCode using "Open Folder...". Then click on the "Run and Debug" icon (or use shift-command-D) and start the "Debug server" with the green play button. Open `src/server/game_logic.js` and set a breakpoint at `runGame``. Open a "New Terminal" and observer the localhost URL in the "DEBUG CONSOLE". Open this URL in two different browsers and start playing the game. After both players hit "Send Blocks" VSCode should stop at the breakpoint. Now guide the execution with "Step Over" and "Step Into". Observe the value of the variables on the top left. You can also use the "+" next to "WATCH" to follow particular variables of your choice. Before taking a step formulate an expectation and take the time to check whether the result of the next step agrees with your expectation. If not, you either found a bug or you learned sth interesting about how the program works.
 
