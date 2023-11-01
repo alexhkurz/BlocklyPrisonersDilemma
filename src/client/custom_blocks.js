@@ -65,6 +65,22 @@ Blockly.defineBlocksWithJsonArray([
     "previousStatement": null,
     "nextStatement": null,
     "colour": 20,
+  },
+  {
+    "type": "always_cooperate",
+    "message0": "Always Cooperate",
+    "output": "cooperate",
+    "colour": 300,
+    "previousStatement": null,
+    "nextStatement": null
+  },
+  {
+    "type": "always_defect",
+    "message0": "Always Defect",
+    "output": "defect",
+    "colour": 4000,
+    "previousStatement": null,
+    "nextStatement": null
   }
 ]);
 
@@ -97,5 +113,15 @@ Blockly.JavaScript.forBlock['if_last_move_cooperate'] = function(block) {
 Blockly.JavaScript.forBlock['if_last_move_defect'] = function(block) {
   var move = Blockly.JavaScript.valueToCode(block, 'MOVE', Blockly.JavaScript.ORDER_ATOMIC);
   var code = 'if (lastOpponentMove === "defect") { ' + move + ' }\n';
+  return code;
+};
+
+Blockly.JavaScript.forBlock['always_cooperate'] = function(block) {
+  var code = 'move = "cooperate";'
+  return code;
+};
+
+Blockly.JavaScript.forBlock['always_defect'] = function(block) {
+  var code = 'move = "defect";'
   return code;
 };
