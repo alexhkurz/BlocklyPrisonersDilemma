@@ -4,11 +4,13 @@ https://github.com/alexhkurz/BlocklyPrisonersDilemma
 
 (part of my Programming Languages course at Chapman University)
 
+## Introduction
+
 An example of how to tie a Blockly DSL to a backend that can be communicated with via HTTP requests.
 
 ![Tit-for-Tat](img/TitForTat.png)
 
-The example provides a very rudimentary DSL for designing a strategy that plays the [iterated prisoner's dilemma](https://en.wikipedia.org/wiki/Prisoner's_dilemma#The_iterated_prisoner's_dilemma). There are currently only [2 players](https://github.com/alexhkurz/BlocklyPrisonersDilemma/blob/61eb62afc027e9879979055424981e01eeb9b42a/src/server/game_logic.js#L4) allowed. The implemented [payoff matrix](https://github.com/alexhkurz/BlocklyPrisonersDilemma/blob/61eb62afc027e9879979055424981e01eeb9b42a/src/server/game_logic.js#L6) is based on payoffs $3>2>1>0$. The game always runs for [`numberOfRounds`](https://github.com/alexhkurz/BlocklyPrisonersDilemma/blob/61eb62afc027e9879979055424981e01eeb9b42a/src/server/game_logic.js#L16) rounds.
+This repository provides a rudimentary DSL for designing a strategy that plays an [iterated prisoner's dilemma](https://en.wikipedia.org/wiki/Prisoner's_dilemma#The_iterated_prisoner's_dilemma). There are currently only [2 players](https://github.com/alexhkurz/BlocklyPrisonersDilemma/blob/61eb62afc027e9879979055424981e01eeb9b42a/src/server/game_logic.js#L4) allowed. The implemented [payoff matrix](https://github.com/alexhkurz/BlocklyPrisonersDilemma/blob/61eb62afc027e9879979055424981e01eeb9b42a/src/server/game_logic.js#L6) is based on payoffs $3>2>1>0$. The game always runs for [`numberOfRounds`](https://github.com/alexhkurz/BlocklyPrisonersDilemma/blob/61eb62afc027e9879979055424981e01eeb9b42a/src/server/game_logic.js#L16) rounds.
 
 **Some Limitations:**
 
@@ -19,7 +21,7 @@ The example provides a very rudimentary DSL for designing a strategy that plays 
 - A third player can only join if one of the first two players leaves the game voluntarily and explicitely. The only other way to accommodate new players is for the admin to restart the server.
 - There is no support for [tournaments](https://cs.stanford.edu/people/eroberts/courses/soco/projects/1998-99/game-theory/axelrod.html) or for keeping stats.
 
-## Functionality
+### Functionality
 
 - *Register* (makes you known as Player 0 or Player 1 to the server).
 - Design a strategy by dragging blocks from the toolbox to the workspace.
@@ -27,7 +29,7 @@ The example provides a very rudimentary DSL for designing a strategy that plays 
 - *Leave* allows another player to join.
 - It is possible to *Save Blocks* and to *Load Blocks*.
 
-## To see what it does
+### To see what it does
 
 Go to http://35.91.83.141/ in two different browsers. [^AWS]
 
@@ -38,6 +40,8 @@ You can design a strategy and play an iterated prisoner's dilemma against your o
 This has been tested only for [Tit-for-Tat](img/TitForTat.png) and only for two players.
 
 ## To install locally
+
+In class we worked through this and the next section.
 
 Fork this repo. Make a local copy of your fork (eg using `git clone` from your commandline).
 
@@ -65,7 +69,7 @@ Make sure to open your local copy of your fork in VSCode using "Open Folder...".
 
 ## To deploy at AWS
 
-This is just a rough run down.
+This is just a rough run down, we didn't go through this in class.
 
 Create an AWS instance (I selected all the default settings as of Oct 2023).
 
