@@ -26,6 +26,20 @@ Blockly.defineBlocksWithJsonArray([
     "colour": 120,
   },
   {
+    "type": "direct_move",
+    "message0": "Direct move %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "MOVE",
+        "check": ["defect", "cooperate"]
+      }
+    ],
+    "previousStatement": null,
+    "nextStatement": null,
+    "colour": 60
+  },
+  {
     "type": "if_last_move_defect",
     "message0": "If opponent did defect %1",
     "args0": [
@@ -118,3 +132,10 @@ Blockly.JavaScript.forBlock['if_last_move_defect'] = function(block) {
   var code = 'if (lastOpponentMove === "defect") { ' + move + ' }\n';
   return code;
 };
+
+Blockly.JavaScript['direct_move'] = function(block) {
+  var move = Blockly.JavaScript.valueToCode(block, 'MOVE', Blockly.JavaScript.ORDER_ATOMIC);
+  return move + ';\n';
+};
+
+
