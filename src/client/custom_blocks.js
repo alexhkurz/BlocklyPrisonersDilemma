@@ -49,8 +49,21 @@ Blockly.defineBlocksWithJsonArray([
         "check": ["defect", "cooperate"]
       }
     ],
-    "previousStatement": null,
     "nextStatement": null,
+    "colour": 90,
+  },
+  {
+    "type": "second_move",
+    "message0": "Second move %1",
+    "args0": [
+      {
+        "type": "input_value",
+        "name": "MOVE",
+        "check": ["defect", "cooperate"]
+      }
+    ],
+    "previousStatement": true,
+    "nextStatement": true,
     "colour": 90,
   },
   {
@@ -82,9 +95,15 @@ Blockly.JavaScript.forBlock['first_move'] = function(block) {
   return code;
 };
 
+Blockly.JavaScript.forBlock['second_move'] = function(block) {
+  var move = Blockly.JavaScript.valueToCode(block, 'MOVE', Blockly.JavaScript.ORDER_ATOMIC);
+  var code = 'if (round === 1) { ' + move + ' }\n';
+  return code;
+}
+
 Blockly.JavaScript.forBlock['loop'] = function(block) {
   var statements = Blockly.JavaScript.statementToCode(block, 'STATEMENTS');
-  var code = 'if (round > 0) { \n' + statements + ' }\n';
+  var code = 'if (round > 1) { \n' + statements + ' }\n';
   return code;
 };
 
