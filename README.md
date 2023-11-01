@@ -2,6 +2,8 @@
 
 https://github.com/alexhkurz/BlocklyPrisonersDilemma
 
+(part of my Programming Languages course at Chapman University)
+
 An example of how to tie a Blockly DSL to a backend that can be communicated with via HTTP requests.
 
 ![Tit-for-Tat](img/TitForTat.png)
