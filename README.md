@@ -14,7 +14,9 @@ The example provides a very rudimentary DSL for designing a strategy that plays 
 - The number of rounds is fixed but should be probabilistic.
 - The number of players is 2.
 - Sometimes, only the second player gets the result of the game.
+- A third player can only join if one of the first two players leaves the game voluntarily and explicitely. The only other way to accommodate new players is for the admin to restart the server.
 - There is no support for [tournaments](https://cs.stanford.edu/people/eroberts/courses/soco/projects/1998-99/game-theory/axelrod.html) or for keeping stats.
+
 ## Functionality
 
 - *Register* (makes you known as Player 0 or Player 1 to the server).
@@ -25,7 +27,9 @@ The example provides a very rudimentary DSL for designing a strategy that plays 
 
 ## To see what it does
 
-Go to http://35.91.83.141/ in two different browsers. 
+Go to http://35.91.83.141/ in two different browsers. [^AWS]
+
+[^AWS]: I created this AWS instance for teaching my class. I do not promise to maintain it in the future.
 
 You can design a strategy and play an iterated prisoner's dilemma against your opponent.
 
