@@ -33,17 +33,21 @@ This has been tested only for [Tit-for-Tat](img/TitForTat.png) and only for two 
 
 ## To install locally
 
-Fork this repo. Make a local copy using `git clone`.
+Fork this repo. Make a local copy of your fork (eg using `git clone` from your commandline).
 
 Requires [nodejs](https://nodejs.org/en/download).
 
+In the root of your local copy of your fork run:
+
 ```
 cd src/server
-npm i
+npm install
 node server.js
 ```
 
-Once you followed the steps above, you should be able to access http://localhost:3000/
+Once you followed the steps above, you should be able to access http://localhost:3000/ .
+
+If you have questions, raise an [issue](https://github.com/alexhkurz/BlocklyPrisonersDilemma/issues). Make an improvement proposal to my code and submit it to me as a [pull request](https://github.com/alexhkurz/BlocklyPrisonersDilemma/pulls).
 
 ## To deploy at AWS
 
