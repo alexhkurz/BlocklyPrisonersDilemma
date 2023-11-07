@@ -77,6 +77,9 @@ app.post('/execute', async (req, res) => {
     // Players ready, run game
     if (playerCodes[0] && playerCodes[1]) {
         console.log("Both players have submitted their code. Running the game..."); // Log before running the game
+        console.log("Player 0 code: ", playerCodes[0]); // Log player 0 code
+        console.log("Player 1 code: ", playerCodes[1]); // Log player 1 code
+        console.log("Game state before running the game: ", JSON.stringify(gameLogic.env)); // Log game state
         try {
             let { index, logs } = runGame(playerCodes[0], playerCodes[1]);
             gameIndex = index
