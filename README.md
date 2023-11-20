@@ -31,7 +31,7 @@ This repository provides a rudimentary DSL for designing a strategy that plays a
 
 ### To see what it does
 
-Go to http://35.91.83.141/ in two different browsers. [^AWS]
+Go to http://34.222.6.186/ in two different browsers. [^AWS]
 
 [^AWS]: I created this AWS instance for teaching my class. I do not promise to maintain it in the future.
 
@@ -73,7 +73,7 @@ This is just a rough run down, we didn't go through this in class.
 
 Create an AWS instance (I selected all the default settings as of Oct 2023).
 
-In a terminal on your machine log into your AWS instance:
+In a terminal on your machine log into [your AWS instance](https://aws.amazon.com/):
 
 ```
 ssh -i blocklyPrisonersDilemma.pem ec2-user@XXX.amazonaws.com
@@ -94,7 +94,6 @@ To connect the apache server with the nodejs server we need a config file. Creat
 
 ```
 <VirtualHost *:80>
-    ServerName 35.91.83.141
     ProxyRequests Off
     ProxyPreserveHost On
     <Location />
@@ -119,3 +118,5 @@ cd server
 npm install
 pm2 start server.js
 ```
+
+I believe I also had to change in AWS, under *Network & Security* and  *Security Groups* the *Inbound rules*. I added a new rule with *Port range* `80` and *Source* `0.0.0.0/0`.
