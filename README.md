@@ -1,8 +1,8 @@
 # BlocklyPrisonersDilemma
 
-https://github.com/alexhkurz/BlocklyPrisonersDilemma
-
 (part of my Programming Languages course at Chapman University)
+
+At the time of this writing available at http://192.168.16.72:3000/ but I do not guarantee to maintain this connection.
 
 ## Introduction
 
