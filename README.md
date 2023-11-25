@@ -69,6 +69,8 @@ Make sure to open your local copy of your fork in VSCode using "Open Folder...".
 
 ## To deploy at AWS
 
+(I terminated the instance when the free tier offer ended.) 
+
 This is just a rough run down, we didn't go through this in class.
 
 Create an AWS instance (I selected all the default settings as of Oct 2023).
