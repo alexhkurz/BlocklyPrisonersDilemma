@@ -69,7 +69,7 @@ Make sure to open your local copy of your fork in VSCode using "Open Folder...".
 
 ## To deploy at Chapman
 
-If you are outside of Chapman start the Chapman VPN. On my system it is called BIG-IP Edge Client.
+If you are outside of Chapman start the Chapman VPN. On my system it is called BIG-IP Edge Client. In a terminal, `cd` into your local copy of this repo. Then run
 
 ```
 ssh username@students.chapman.edu
