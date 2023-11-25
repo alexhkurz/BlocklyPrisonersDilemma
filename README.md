@@ -67,6 +67,25 @@ Make sure to open your local copy of your fork in VSCode using "Open Folder...".
 
 **Homework:** (Checkout branch `homework` for this.) In `src/client/index.html` find the "endpoints" that are triggered by each button, for example, `/execute` for "Send Blocks". We want, in particular, use the debugger to learn what happens when a user clicks "Send Blocks". For this purpose, set a breakpoint at the corresponding endpoint in `src/server/server.js` (the line after `app.post('/execute'` should do fine). Use the debugger to step through the code and explain what happens. Under which conditions do both players get the result of the game? Why can it happen that only the second player gets the result? What would be a way to improve on this? Feel free to use AI to help with understanding the code but answer the questions in your own words. Describe how you used the debugger and what you learned from using it. 
 
+## To deploy at Chapman
+
+If you are outside of Chapman start the Chapman VPN. On my system it is called BIG-IP Edge Client.
+
+```
+ssh username@students.chapman.edu
+mkdir BlocklyPrisonersDilemma
+control-d
+scp -r src username@students.chapman.edu:BlocklyPrisonsersDilemma
+ssh username@students.chapman.edu
+cd BlocklyPrisonersDilemma/src/server
+node server.js&
+```
+
+Watch out for the port number. If the port is, say, 3000, you should be able to access the webpage at 
+
+http://192.168.16.72:3000/
+
+
 ## To deploy at AWS
 
 (I terminated the instance when the free tier offer ended.) 
