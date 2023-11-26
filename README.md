@@ -73,12 +73,14 @@ If you are outside of Chapman start the Chapman VPN. On my system it is called B
 
 ```
 ssh username@students.chapman.edu
-mkdir BlocklyPrisonersDilemma
-control-d
-scp -r src username@students.chapman.edu:BlocklyPrisonsersDilemma
+    mkdir BlocklyPrisonersDilemma
+    /usr/local/bin/npm install express
+    /usr/local/bin/npm install express-session
+    control-d
+scp -r src username@students.chapman.edu:BlocklyPrisonersDilemma
 ssh username@students.chapman.edu
-cd BlocklyPrisonersDilemma/src/server
-node server.js&
+    cd BlocklyPrisonersDilemma/src/server
+    node server.js&
 ```
 
 Watch out for the port number. If the port is, say, 3000, you should be able to access the webpage at 
