@@ -69,18 +69,15 @@ Make sure to open your local copy of your fork in VSCode using "Open Folder...".
 
 ## To deploy at Chapman
 
-If you are outside of Chapman start the Chapman VPN. On my system it is called BIG-IP Edge Client. In a terminal, `cd` into your local copy of this repo. Then run
+If you are outside of Chapman start the Chapman VPN. On my system it is called BIG-IP Edge Client. In a terminal, `cd` into your local copy of this repo. Then run (if `/usr/local/bin/` is not in your path add `PATH="/usr/local/bin:$PATH`)
 
 ```
 ssh username@students.chapman.edu
-    mkdir BlocklyPrisonersDilemma
-    /usr/local/bin/npm install express
-    /usr/local/bin/npm install express-session
-    control-d
-scp -r src username@students.chapman.edu:BlocklyPrisonersDilemma
-ssh username@students.chapman.edu
-    cd BlocklyPrisonersDilemma/src/server
-    node server.js&
+# PATH="/usr/local/bin:$PATH
+git clone https://github.com/alexhkurz/BlocklyPrisonersDilemma.git
+cd BlocklyPrisonersDilemma/src/server
+npm install
+node server.js&
 ```
 
 Watch out for the port number. If the port is, say, 3000, you should be able to access the webpage at 
