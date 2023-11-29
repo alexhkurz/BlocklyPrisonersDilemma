@@ -2,7 +2,7 @@
 
 (part of my Programming Languages course at Chapman University)
 
-At the time of this writing available at http://192.168.16.72:3000/ inside the Chapman network.
+At the time of this writing available at http://icd.chapman.edu:3000/ .
 
 ## Introduction
 
@@ -69,11 +69,10 @@ Make sure to open your local copy of your fork in VSCode using "Open Folder...".
 
 ## To deploy at Chapman
 
-If you are outside of Chapman start the Chapman VPN. On my system it is called BIG-IP Edge Client. In a terminal, `cd` into your local copy of this repo. Then run (if `/usr/local/bin/` is not in your path add `PATH="/usr/local/bin:$PATH`)
+In a terminal run:
 
 ```
-ssh username@students.chapman.edu
-# PATH="/usr/local/bin:$PATH
+ssh username@icd.chapman.edu
 git clone https://github.com/alexhkurz/BlocklyPrisonersDilemma.git
 cd BlocklyPrisonersDilemma/src/server
 npm install
@@ -82,8 +81,7 @@ node server.js&
 
 Watch out for the port number. If the port is, say, 3000, you should be able to access the webpage at 
 
-http://192.168.16.72:3000/
-
+http://icd.chapman.edu:3000/
 
 ## To deploy at AWS
 
